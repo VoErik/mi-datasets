@@ -1,0 +1,42 @@
+[project]
+name = "mi-datasets"
+version = "0.1.0"
+description = "Unified dataset interface for my own purposes :) Mostly MechInterp work in Vision."
+readme = "README.md"
+authors = [
+    { name = "Erik Voigt", email = "erik.voigt@uni-bamberg.de" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.8.5",
+    "gdown>=6.0.0",
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.4",
+    "python-dotenv>=1.2.2",
+    "pyyaml>=6.0.3",
+    "torch>=2.11.0",
+    "torch-geometric>=2.7.0",
+    "torchvision>=0.26.0",
+]
+
+[project.scripts]
+init-configs = "mi_datasets.cli.create_default_configs:init_configs"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mi_datasets"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.coverage.run]
+omit = [
+    "src/mi_datasets/utils/visualize.py"
+]
+
