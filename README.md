@@ -21,12 +21,7 @@ For MI, exact reproducibility is important. Standard data loaders and transform 
 ## 📦 Installation
 
 ```bash
-git clone [https://github.com/your-org/mi_datasets.git](https://github.com/your-org/mi_datasets.git)
-cd mi_datasets
-# Create a virtual environment and install the package in editable mode
-uv venv
-source .venv/bin/activate
-uv pip install -e .
+uv add "git+ssh://git@github.com/VoErik/mi-datasets.git"
 ```
 
 ### Optional: Set Cache Directory
