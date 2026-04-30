@@ -3,6 +3,7 @@ import torch
 import torchvision
 import mi_datasets.providers.torchvision_datasets
 from typing import Any, Dict, Optional, List
+from pathlib import Path
 from mi_datasets.core.base import BaseMIDataset
 
 from mi_datasets.core.registry import register_dataset
@@ -82,7 +83,7 @@ class CelebADataset(BaseMIDataset):
 
     def _load_into_memory(self) -> None:
         self.tv_dataset = torchvision.datasets.CelebA(
-            root=self.cache_dir, 
+            root=str(Path(self.cache_dir).parent), # torchvision celeba is quirky like that :)
             split=self.split,
             target_type="attr",
             download=not self._is_cached()
