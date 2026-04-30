@@ -19,7 +19,8 @@ class CacheManager:
         Returns the isolated cache directory for a specific dataset.
         Maintains the hierarchy (e.g., ~/.cache/mi_datasets/vision/cifar10)
         """
-        path = os.path.join(self.base_dir, *identifier.split("/"))
+        dataset_name = identifier.split("/")[-1]
+        path = os.path.join(self.base_dir, dataset_name)
         os.makedirs(path, exist_ok=True)
         return path
 
